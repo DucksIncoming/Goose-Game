@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2p2b5pk2vq4"]
+
+[ext_resource type="Script" path="res://Scripts/NPC_Farah.gd" id="1_cvr8w"]
+[ext_resource type="Texture2D" uid="uid://byaq2b5hvudta" path="res://Assets/Textures/NPCs/Farah_Idle_2.png" id="2_u7qnp"]
+[ext_resource type="Texture2D" uid="uid://cu63e0qg8opgj" path="res://Assets/Textures/NPCs/Farah_Idle_1.png" id="3_tuiik"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjyh"]
+size = Vector2(7.75, 46)
+
+[sub_resource type="Animation" id="Animation_3pgsd"]
+resource_name = "Idle"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PersonSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_tuiik"), ExtResource("2_u7qnp")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_td2ag"]
+_data = {
+"Idle": SubResource("Animation_3pgsd")
+}
+
+[node name="Farah" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_cvr8w")
+
+[node name="PersonSprite" type="Sprite2D" parent="."]
+texture = ExtResource("3_tuiik")
+
+[node name="PersonCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.125, 1)
+shape = SubResource("RectangleShape2D_ikjyh")
+
+[node name="PersonAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_td2ag")
+}

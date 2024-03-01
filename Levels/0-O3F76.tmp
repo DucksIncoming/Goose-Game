@@ -1,0 +1,173 @@
+[gd_scene load_steps=19 format=3 uid="uid://bngyhlnotyxjm"]
+
+[ext_resource type="Script" path="res://Levels/Player.gd" id="1_mw2mj"]
+[ext_resource type="Texture2D" uid="uid://cx4l4xyjn0dsx" path="res://Assets/Textures/Player/Duck_Idle1.png" id="2_ioyt4"]
+[ext_resource type="Texture2D" uid="uid://dtkr4j87el86u" path="res://Assets/Textures/Player/Duck_Idle2.png" id="3_u2bmo"]
+[ext_resource type="Texture2D" uid="uid://ccljqigg3t0gf" path="res://Assets/Textures/Player/Duck_Run1.png" id="4_subhc"]
+[ext_resource type="Texture2D" uid="uid://b8670b3tw7o4o" path="res://Assets/Textures/Tiles/T_TileMap.png" id="4_susbd"]
+[ext_resource type="Texture2D" uid="uid://cdij7us2phs7h" path="res://Assets/Textures/Tiles/TimePortal-OverlayPillars.png" id="5_d81f6"]
+[ext_resource type="Texture2D" uid="uid://dvc00ai2gyhvl" path="res://Assets/Textures/Tiles/TimePortal-UnderlayPortal.png" id="6_q2yey"]
+[ext_resource type="PackedScene" uid="uid://c2p2b5pk2vq4" path="res://Elements/NPC_Farah.tscn" id="8_vbobs"]
+[ext_resource type="PackedScene" uid="uid://1wqor2ww2nt7" path="res://Elements/NPC_Isaiah.tscn" id="9_ba700"]
+
+[sub_resource type="Animation" id="Animation_yn01o"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_ioyt4"), ExtResource("3_u2bmo")]
+}
+
+[sub_resource type="Animation" id="Animation_gge1w"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_u2bmo"), ExtResource("2_ioyt4")]
+}
+
+[sub_resource type="Animation" id="Animation_xwty5"]
+resource_name = "Land"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_u2bmo"), ExtResource("2_ioyt4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GooseAnimator:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_dmyyt"]
+resource_name = "Walk"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_ioyt4"), ExtResource("4_subhc")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7ppn"]
+_data = {
+"Idle": SubResource("Animation_yn01o"),
+"Jump": SubResource("Animation_gge1w"),
+"Land": SubResource("Animation_xwty5"),
+"Walk": SubResource("Animation_dmyyt")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7q0ju"]
+radius = 4.66667
+height = 13.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fywgv"]
+radius = 59.054
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp7r2"]
+resource_name = "Brick"
+texture = ExtResource("4_susbd")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_sl5ba"]
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 2
+sources/0 = SubResource("TileSetAtlasSource_kp7r2")
+
+[node name="Base" type="Node2D"]
+
+[node name="Goose" type="CharacterBody2D" parent="."]
+position = Vector2(500, 432.28)
+scale = Vector2(4, 4)
+script = ExtResource("1_mw2mj")
+
+[node name="GooseSprite" type="Sprite2D" parent="Goose"]
+texture = ExtResource("2_ioyt4")
+
+[node name="GooseAnimator" type="AnimationPlayer" parent="Goose"]
+libraries = {
+"": SubResource("AnimationLibrary_r7ppn")
+}
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="Goose"]
+visible = false
+position = Vector2(1.00001, 5.36001)
+shape = SubResource("CapsuleShape2D_7q0ju")
+
+[node name="InteractionRadius" type="Area2D" parent="Goose"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goose/InteractionRadius"]
+shape = SubResource("CircleShape2D_fywgv")
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(506, 781)
+zoom = Vector2(2, 2)
+
+[node name="TileMap" type="TileMap" parent="."]
+scale = Vector2(4, 4)
+tile_set = SubResource("TileSet_sl5ba")
+format = 2
+layer_0/tile_data = PackedInt32Array(1048574, 0, 0, 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0)
+
+[node name="Portal" type="Node2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="OverlayPillars" type="Sprite2D" parent="Portal"]
+z_index = 1
+position = Vector2(482, 200)
+texture = ExtResource("5_d81f6")
+
+[node name="UnderlayPortal" type="Sprite2D" parent="Portal"]
+z_index = -1
+position = Vector2(482, 200)
+texture = ExtResource("6_q2yey")
+
+[node name="Farah" parent="." instance=ExtResource("8_vbobs")]
+
+[node name="Isaiah" parent="." instance=ExtResource("9_ba700")]
+position = Vector2(1709, 864)
+
+[connection signal="body_entered" from="Goose/InteractionRadius" to="Goose" method="_on_interaction_radius_body_entered"]
+[connection signal="body_exited" from="Goose/InteractionRadius" to="Goose" method="_on_interaction_radius_body_exited"]

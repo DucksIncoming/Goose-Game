@@ -1,0 +1,186 @@
+[gd_scene load_steps=16 format=3 uid="uid://ddtgouroyaq5o"]
+
+[ext_resource type="Script" path="res://Scripts/Player.gd" id="1_j6i5p"]
+[ext_resource type="Texture2D" uid="uid://cx4l4xyjn0dsx" path="res://Assets/Textures/Player/Duck_Idle1.png" id="2_kti4l"]
+[ext_resource type="Texture2D" uid="uid://dtkr4j87el86u" path="res://Assets/Textures/Player/Duck_Idle2.png" id="3_r04aa"]
+[ext_resource type="Texture2D" uid="uid://ccljqigg3t0gf" path="res://Assets/Textures/Player/Duck_Run1.png" id="4_gsost"]
+[ext_resource type="Texture2D" uid="uid://b1q62syy0nfk0" path="res://Assets/Textures/UI/TemporalEarpiece-Dialog.png" id="5_55or1"]
+[ext_resource type="Script" path="res://Elements/TemporalEarpiece.gd" id="5_86gre"]
+[ext_resource type="Texture2D" uid="uid://4t2i6c1hh6ly" path="res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Left.png" id="6_ibmbm"]
+[ext_resource type="FontFile" uid="uid://drmpbiu5seyvv" path="res://Assets/Fonts/8bitoperator.ttf" id="7_a1d3h"]
+
+[sub_resource type="Animation" id="Animation_yn01o"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_kti4l"), ExtResource("3_r04aa")]
+}
+
+[sub_resource type="Animation" id="Animation_gge1w"]
+resource_name = "Jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_r04aa"), ExtResource("2_kti4l")]
+}
+
+[sub_resource type="Animation" id="Animation_xwty5"]
+resource_name = "Land"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("3_r04aa"), ExtResource("2_kti4l")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GooseAnimator:current_animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+
+[sub_resource type="Animation" id="Animation_dmyyt"]
+resource_name = "Walk"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GooseSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("2_kti4l"), ExtResource("4_gsost")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r7ppn"]
+_data = {
+"Idle": SubResource("Animation_yn01o"),
+"Jump": SubResource("Animation_gge1w"),
+"Land": SubResource("Animation_xwty5"),
+"Walk": SubResource("Animation_dmyyt")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7q0ju"]
+radius = 4.66667
+height = 13.64
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fywgv"]
+radius = 59.054
+
+[node name="Goose" type="CharacterBody2D"]
+scale = Vector2(4, 4)
+script = ExtResource("1_j6i5p")
+
+[node name="GooseSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_kti4l")
+
+[node name="GooseAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_r7ppn")
+}
+
+[node name="PlayerCollision" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1.00001, 5.36001)
+shape = SubResource("CapsuleShape2D_7q0ju")
+
+[node name="InteractionRadius" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionRadius"]
+shape = SubResource("CircleShape2D_fywgv")
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="TemporalEarpiece" type="Control" parent="GUI"]
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_right = 512.0
+offset_bottom = 256.0
+grow_horizontal = 2
+script = ExtResource("5_86gre")
+
+[node name="DialogBackground" type="TextureRect" parent="GUI/TemporalEarpiece"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -512.0
+offset_right = -384.0
+offset_bottom = 32.0
+grow_horizontal = 2
+scale = Vector2(8, 8)
+texture = ExtResource("5_55or1")
+expand_mode = 3
+
+[node name="SpeakerIcon" type="TextureRect" parent="GUI/TemporalEarpiece"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 160.0
+offset_bottom = 192.0
+texture = ExtResource("6_ibmbm")
+
+[node name="SpeakerName" type="Label" parent="GUI/TemporalEarpiece"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 40.0
+offset_right = 572.0
+offset_bottom = 106.0
+theme_override_fonts/font = ExtResource("7_a1d3h")
+theme_override_font_sizes/font_size = 36
+text = "Farah"
+
+[node name="SpeakerDialog" type="Label" parent="GUI/TemporalEarpiece"]
+offset_left = 180.0
+offset_top = 95.0
+offset_right = 916.0
+offset_bottom = 216.0
+theme_override_fonts/font = ExtResource("7_a1d3h")
+theme_override_font_sizes/font_size = 16
+text = "Ayo Mr. White. I have had a kidney failure. I'm in insane medical debt yo. Fucked up what these perverse financial incentives do to our fundamental humanitarian infrastructure yo. The profit motive is straight wack."
+autowrap_mode = 2
+
+[node name="TextTimer" type="Timer" parent="GUI/TemporalEarpiece"]
+wait_time = 0.05
+
+[connection signal="body_entered" from="InteractionRadius" to="." method="_on_interaction_radius_body_entered"]
+[connection signal="body_exited" from="InteractionRadius" to="." method="_on_interaction_radius_body_exited"]
+[connection signal="timeout" from="GUI/TemporalEarpiece/TextTimer" to="GUI/TemporalEarpiece" method="_on_text_timer_timeout"]
