@@ -4,6 +4,7 @@ class_name Interactable
 var interactionPrompt = preload("res://Elements/interaction_prompt.tscn")
 var promptObject : Node2D
 @export var promptPosition = Vector2.ZERO
+@onready var player = get_tree().get_root().get_node("Base/Goose")
 
 var promptActive = false
 
@@ -42,3 +43,6 @@ func getPromptNode():
 		if (ch.has_method("isPrompt")):
 			return ch
 	return null
+
+func pushDialog(text, expr, names):
+	player.pushDialog(text, expr, names)

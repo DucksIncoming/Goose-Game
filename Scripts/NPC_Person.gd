@@ -1,6 +1,8 @@
 extends Interactable
 class_name NPC_Person
 
+var personName = ""
+
 @onready var PersonAnimator = $PersonAnimator
 
 func npc_ready():

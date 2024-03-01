@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bngyhlnotyxjm"]
+[gd_scene load_steps=10 format=3 uid="uid://bngyhlnotyxjm"]
 
 [ext_resource type="PackedScene" uid="uid://ddtgouroyaq5o" path="res://Elements/Goose.tscn" id="1_f40ro"]
 [ext_resource type="Texture2D" uid="uid://b8670b3tw7o4o" path="res://Assets/Textures/Tiles/T_TileMap.png" id="4_susbd"]
@@ -21,8 +21,6 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_kp7r2")
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gkkrb"]
-
 [node name="Base" type="Node2D"]
 
 [node name="Goose" parent="." instance=ExtResource("1_f40ro")]
@@ -42,7 +40,6 @@ layer_0/tile_data = PackedInt32Array(1048574, 0, 0, 1048575, 0, 0, 983040, 0, 0,
 position = Vector2(-500, 0)
 scale = Vector2(4, 4)
 script = ExtResource("6_wqinm")
-promptPosition = Vector2(0, -50)
 
 [node name="OverlayPillars" type="Sprite2D" parent="Portal"]
 z_index = 1
@@ -53,11 +50,6 @@ texture = ExtResource("5_d81f6")
 z_index = -1
 position = Vector2(482, 200)
 texture = ExtResource("6_q2yey")
-
-[node name="Area2D" type="Area2D" parent="Portal"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/Area2D"]
-shape = SubResource("RectangleShape2D_gkkrb")
 
 [node name="Farah" parent="." instance=ExtResource("8_vbobs")]
 position = Vector2(1680, 864)

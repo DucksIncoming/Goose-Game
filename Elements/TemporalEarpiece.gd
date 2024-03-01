@@ -1,43 +1,53 @@
 extends Control
 
-var dialog = "I might have to ajhsldljh;asljhdal;hjsn dashj dnhj;aslhjd lhjasdnhjl ahjlksdnh jlanjlshdn lhjaslhjd"
-var dialogQueue = ["and then explode i think.", "It should be fine though."]
+var dialog = ""
+var dialogQueue = []
 
-var expression = "res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Left.png"
-var expressionQueue = ["res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Down.png", "res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Forward.png"]
+var expression = ""
+var expressionQueue = []
+
+var speakerName = ""
+var nameQueue = []
 
 var currentCharacter = 0
-var textSpeed = 10
+var textSpeed = 30
 var dialogCompleted = false
 
 @onready var dialogElement = $SpeakerDialog
+@onready var speakerNameElement = $SpeakerName
 @onready var TextTimer = $TextTimer
 @onready var speakerIcon = $SpeakerIcon
+@onready var player = get_parent().get_parent()
 
 func _ready():
 	stepDialog()
-	loadDialog(["This is a test also."], ["res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Up.png"])
 
 func _process(delta):
-	if Input.is_action_just_pressed("Interact"):
+	speakerNameElement.text = speakerName
+	print(dialogCompleted)
+	
+	if Input.is_action_just_pressed("Interact") and currentCharacter > 1:
 		if (not dialogCompleted):
-			dialogCompleted = true
+			currentCharacter = len(dialog)
 		elif (len(dialogQueue) > 0):
 			dialog = dialogQueue[0]
 			expression = expressionQueue[0]
+			speakerName = nameQueue[0]
+			
 			dialogQueue.remove_at(0)
 			expressionQueue.remove_at(0)
+			nameQueue.remove_at(0)
+			
 			dialogCompleted = false
-			currentCharacter = 0
+			currentCharacter = 1
 			speakerIcon.texture = load(expression)
 		else:
 			closeDialog()
 
 func stepDialog():
-	dialogElement.text = [dialog.substr(0,currentCharacter), dialog][int(dialogCompleted)]
+	dialogElement.text = dialog.substr(0,currentCharacter)
 	currentCharacter += 1
 	TextTimer.start(1 / textSpeed)
-	
 
 func _on_text_timer_timeout():
 	if (dialogElement.text != dialog):
@@ -45,16 +55,19 @@ func _on_text_timer_timeout():
 	else:
 		dialogCompleted = true
 
-func loadDialog(text, expr):
+func loadDialog(text, expr, names):
 	if (dialogCompleted):
 		dialog = text[0]
-		dialogCompleted = false
 		expression = expr[0]
+		speakerName = names[0]
+		
+		dialogCompleted = false
 		speakerIcon.texture = load(expression)
 		openDialog()
 		
 		text.remove_at(0)
 		expr.remove_at(0)
+		names.remove_at(0)
 		
 	for t in text:
 		dialogQueue.append(t)
@@ -62,9 +75,15 @@ func loadDialog(text, expr):
 	for e in expr:
 		expressionQueue.append(e)
 	currentCharacter = 0
+	
+	for n in names:
+		nameQueue.append(n)
 
 func openDialog():
 	visible = true
+	player.inDialog = true
+	dialogElement.text = ""
 
 func closeDialog():
 	visible = false
+	player.inDialog = false

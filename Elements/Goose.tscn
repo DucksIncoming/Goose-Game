@@ -127,6 +127,7 @@ shape = SubResource("CircleShape2D_fywgv")
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="TemporalEarpiece" type="Control" parent="GUI"]
+visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -169,6 +170,7 @@ theme_override_font_sizes/font_size = 36
 text = "Farah"
 
 [node name="SpeakerDialog" type="Label" parent="GUI/TemporalEarpiece"]
+layout_mode = 0
 offset_left = 180.0
 offset_top = 95.0
 offset_right = 916.0
@@ -181,6 +183,8 @@ autowrap_mode = 2
 [node name="TextTimer" type="Timer" parent="GUI/TemporalEarpiece"]
 wait_time = 0.05
 
+[connection signal="area_entered" from="InteractionRadius" to="." method="_on_interaction_radius_area_entered"]
+[connection signal="area_exited" from="InteractionRadius" to="." method="_on_interaction_radius_area_exited"]
 [connection signal="body_entered" from="InteractionRadius" to="." method="_on_interaction_radius_body_entered"]
 [connection signal="body_exited" from="InteractionRadius" to="." method="_on_interaction_radius_body_exited"]
 [connection signal="timeout" from="GUI/TemporalEarpiece/TextTimer" to="GUI/TemporalEarpiece" method="_on_text_timer_timeout"]

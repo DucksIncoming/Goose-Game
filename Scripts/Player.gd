@@ -9,7 +9,7 @@ var cameraSmooth = 5
 
 # Flags
 var isJumping = false
-var canInteract = true
+var inDialog = false
 
 # Interaction Variables
 var activeInteractableBodies = []
@@ -20,11 +20,14 @@ var activeInteractableNames = []
 @onready var GooseAnimator = $GooseAnimator
 @onready var InteractionRadius = $InteractionRadius
 @onready var PlayerCamera = get_parent().get_node("PlayerCamera")
+@onready var GUI = $GUI
 
 func _ready():
 	GooseAnimator.current_animation = "Idle"
 
 func _process(delta):
+	print(activeInteractableBodies)
+	
 	# I love handler functions
 	applyForces(delta)
 	animationHandler(delta)
@@ -89,5 +92,18 @@ func findInteractable():
 		elm.promptActive = false
 	if (minBody):
 		minBody.promptActive = true
-		if (Input.is_action_just_pressed("Interact")):
+		if (Input.is_action_just_pressed("Interact") and canInteract()):
 			minBody.interact()
+
+func pushDialog(text, expr, names):
+	GUI.get_node("TemporalEarpiece").loadDialog(text, expr, names)
+
+func canInteract():
+	return not inDialog
+
+
+func _on_interaction_radius_area_entered(area):
+	_on_interaction_radius_body_entered(area.get_parent())
+
+func _on_interaction_radius_area_exited(area):
+	_on_interaction_radius_body_exited(area.get_parent())

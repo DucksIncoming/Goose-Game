@@ -1,10 +1,10 @@
 extends NPC_Person
 
 func npc_ready():
-	pass
+	personName = "Farah"
 
 func npc_process(delta: float):
 	pass
 
 func interact():
-	print("I'm Farah. Fuck penis.")
+	pushDialog(["What the scallop?"],["res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Down.png"], ["Farah"])
