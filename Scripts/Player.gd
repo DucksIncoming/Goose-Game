@@ -17,6 +17,7 @@ var activeInteractableNames = []
 
 # Onready vars
 @onready var GooseSprite = $GooseSprite
+@onready var CostumeSprite = $CostumeSprite
 @onready var GooseAnimator = $GooseAnimator
 @onready var InteractionRadius = $InteractionRadius
 @onready var PlayerCamera = get_parent().get_node("PlayerCamera")
@@ -24,10 +25,9 @@ var activeInteractableNames = []
 
 func _ready():
 	GooseAnimator.current_animation = "Idle"
+	randomizeCostume()
 
 func _process(delta):
-	print(activeInteractableBodies)
-	
 	# I love handler functions
 	applyForces(delta)
 	animationHandler(delta)
@@ -55,6 +55,7 @@ func animationHandler(delta):
 	# Flip horizontally when changing direction
 	var direction = Input.get_axis("WalkRight", "WalkLeft")
 	GooseSprite.flip_h = [1, GooseSprite.flip_h, 0][direction+1]
+	CostumeSprite.flip_h = GooseSprite.flip_h
 	
 	# Jump animations
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
@@ -101,9 +102,13 @@ func pushDialog(text, expr, names):
 func canInteract():
 	return not inDialog
 
-
 func _on_interaction_radius_area_entered(area):
 	_on_interaction_radius_body_entered(area.get_parent())
 
 func _on_interaction_radius_area_exited(area):
 	_on_interaction_radius_body_exited(area.get_parent())
+
+func randomizeCostume():
+	var costumes = ["", "res://Assets/Textures/Player/Chef/Goose_ChefOutfit.png", "res://Assets/Textures/Player/Suit/Goose_Suit.png", "res://Assets/Textures/Player/Tux/Goose_Tux.png"]
+	var random = RandomNumberGenerator.new()
+	CostumeSprite.texture = load(costumes[random.randi_range(0, len(costumes)-1)])

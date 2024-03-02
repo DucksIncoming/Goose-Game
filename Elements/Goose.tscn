@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddtgouroyaq5o"]
+[gd_scene load_steps=17 format=3 uid="uid://ddtgouroyaq5o"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_j6i5p"]
 [ext_resource type="Texture2D" uid="uid://cx4l4xyjn0dsx" path="res://Assets/Textures/Player/Duck_Idle1.png" id="2_kti4l"]
+[ext_resource type="Texture2D" uid="uid://co1etsirr5xix" path="res://Assets/Textures/Player/Suit/Goose_Suit.png" id="3_8h1a1"]
 [ext_resource type="Texture2D" uid="uid://dtkr4j87el86u" path="res://Assets/Textures/Player/Duck_Idle2.png" id="3_r04aa"]
 [ext_resource type="Texture2D" uid="uid://ccljqigg3t0gf" path="res://Assets/Textures/Player/Duck_Run1.png" id="4_gsost"]
 [ext_resource type="Texture2D" uid="uid://b1q62syy0nfk0" path="res://Assets/Textures/UI/TemporalEarpiece-Dialog.png" id="5_55or1"]
@@ -20,10 +21,22 @@ tracks/0/path = NodePath("GooseSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("2_kti4l"), ExtResource("3_r04aa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CostumeSprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.5),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_gge1w"]
@@ -39,6 +52,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [ExtResource("3_r04aa"), ExtResource("2_kti4l")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CostumeSprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_xwty5"]
@@ -68,6 +93,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [&"Idle"]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CostumeSprite:offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.1, 0.2),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(0, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_dmyyt"]
 resource_name = "Walk"
@@ -85,6 +122,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("2_kti4l"), ExtResource("4_gsost")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CostumeSprite:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.05, 0.1),
+"transitions": PackedFloat32Array(1e-05, 1e-05),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7ppn"]
 _data = {
@@ -99,7 +148,7 @@ radius = 4.66667
 height = 13.64
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fywgv"]
-radius = 59.054
+radius = 42.0007
 
 [node name="Goose" type="CharacterBody2D"]
 scale = Vector2(4, 4)
@@ -107,6 +156,11 @@ script = ExtResource("1_j6i5p")
 
 [node name="GooseSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_kti4l")
+
+[node name="CostumeSprite" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+texture = ExtResource("3_8h1a1")
+offset = Vector2(0, 1)
 
 [node name="GooseAnimator" type="AnimationPlayer" parent="."]
 libraries = {

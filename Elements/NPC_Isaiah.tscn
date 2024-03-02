@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://1wqor2ww2nt7"]
 
 [ext_resource type="Script" path="res://Scripts/NPC_Isaiah.gd" id="1_wsrbo"]
-[ext_resource type="Texture2D" uid="uid://clcwudcmj24le" path="res://Assets/Textures/NPCs/Isaiah_Idle1.png" id="2_rs6mj"]
-[ext_resource type="Texture2D" uid="uid://lr2gxl3ltlfi" path="res://Assets/Textures/NPCs/Isaiah_Idle2.png" id="4_34r1k"]
+[ext_resource type="Texture2D" uid="uid://clcwudcmj24le" path="res://Assets/Textures/NPCs/Isaiah/Isaiah_Idle1.png" id="2_q7y08"]
+[ext_resource type="Texture2D" uid="uid://lr2gxl3ltlfi" path="res://Assets/Textures/NPCs/Isaiah/Isaiah_Idle2.png" id="3_blyrr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjyh"]
 size = Vector2(7.75, 37.75)
@@ -21,7 +21,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("2_rs6mj"), ExtResource("4_34r1k")]
+"values": [ExtResource("2_q7y08"), ExtResource("3_blyrr")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_td2ag"]
@@ -35,7 +35,7 @@ scale = Vector2(4, 4)
 script = ExtResource("1_wsrbo")
 
 [node name="PersonSprite" type="Sprite2D" parent="."]
-texture = ExtResource("2_rs6mj")
+texture = ExtResource("2_q7y08")
 
 [node name="PersonCollision" type="CollisionShape2D" parent="."]
 visible = false

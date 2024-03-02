@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clcwudcmj24le"
-path="res://.godot/imported/Isaiah_Idle1.png-95911676aed4714aee0eb195db67b6bb.ctex"
+uid="uid://c70iurw3s01x"
+path="res://.godot/imported/TrashPile.png-2c65ade3d308f80359a9578e3a358b70.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/NPCs/Isaiah_Idle1.png"
-dest_files=["res://.godot/imported/Isaiah_Idle1.png-95911676aed4714aee0eb195db67b6bb.ctex"]
+source_file="res://Assets/Textures/Tiles/TrashPile.png"
+dest_files=["res://.godot/imported/TrashPile.png-2c65ade3d308f80359a9578e3a358b70.ctex"]
 
 [params]
 

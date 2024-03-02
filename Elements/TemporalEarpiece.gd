@@ -10,7 +10,7 @@ var speakerName = ""
 var nameQueue = []
 
 var currentCharacter = 0
-var textSpeed = 30
+var textSpeed = 10
 var dialogCompleted = false
 
 @onready var dialogElement = $SpeakerDialog
@@ -24,7 +24,6 @@ func _ready():
 
 func _process(delta):
 	speakerNameElement.text = speakerName
-	print(dialogCompleted)
 	
 	if Input.is_action_just_pressed("Interact") and currentCharacter > 1:
 		if (not dialogCompleted):

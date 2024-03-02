@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://croycxibykfti"
-path="res://.godot/imported/Isaiah_Speaking_Forward.png-db7943ce4d32d5a49a9ebaea1f845bd3.ctex"
+uid="uid://dmgkwqvraauab"
+path="res://.godot/imported/TrashTube_Overtube.png-f01c2fc096ec69dd3f7585ddf800da04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/NPCs/Isaiah/Isaiah_Speaking_Forward.png"
-dest_files=["res://.godot/imported/Isaiah_Speaking_Forward.png-db7943ce4d32d5a49a9ebaea1f845bd3.ctex"]
+source_file="res://Assets/Textures/Tiles/TrashTube_Overtube.png"
+dest_files=["res://.godot/imported/TrashTube_Overtube.png-f01c2fc096ec69dd3f7585ddf800da04.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://lr2gxl3ltlfi"
-path="res://.godot/imported/Isaiah_Idle2.png-77d025b551ea1af1c504df868815914e.ctex"
+path="res://.godot/imported/Isaiah_Idle2.png-4709c2e05fb417829a34da25482d120b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/NPCs/Isaiah_Idle2.png"
-dest_files=["res://.godot/imported/Isaiah_Idle2.png-77d025b551ea1af1c504df868815914e.ctex"]
+source_file="res://Assets/Textures/NPCs/Isaiah/Isaiah_Idle2.png"
+dest_files=["res://.godot/imported/Isaiah_Idle2.png-4709c2e05fb417829a34da25482d120b.ctex"]
 
 [params]
 

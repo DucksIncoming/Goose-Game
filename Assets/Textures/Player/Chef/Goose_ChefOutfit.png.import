@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu63e0qg8opgj"
-path="res://.godot/imported/Farah_Idle_1.png-317ac6a6c1190fd54a3bd62444d6b714.ctex"
+uid="uid://b5fp2gsd6mjxl"
+path="res://.godot/imported/Goose_ChefOutfit.png-359e07024b9ae20caf390a5f6dc0a54a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/NPCs/Farah_Idle_1.png"
-dest_files=["res://.godot/imported/Farah_Idle_1.png-317ac6a6c1190fd54a3bd62444d6b714.ctex"]
+source_file="res://Assets/Textures/Player/Chef/Goose_ChefOutfit.png"
+dest_files=["res://.godot/imported/Goose_ChefOutfit.png-359e07024b9ae20caf390a5f6dc0a54a.ctex"]
 
 [params]
 

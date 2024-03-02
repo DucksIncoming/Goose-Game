@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bngyhlnotyxjm"]
+[gd_scene load_steps=15 format=3 uid="uid://bngyhlnotyxjm"]
 
 [ext_resource type="PackedScene" uid="uid://ddtgouroyaq5o" path="res://Elements/Goose.tscn" id="1_f40ro"]
 [ext_resource type="Texture2D" uid="uid://b8670b3tw7o4o" path="res://Assets/Textures/Tiles/T_TileMap.png" id="4_susbd"]
 [ext_resource type="Texture2D" uid="uid://cdij7us2phs7h" path="res://Assets/Textures/Tiles/TimePortal-OverlayPillars.png" id="5_d81f6"]
 [ext_resource type="Texture2D" uid="uid://dvc00ai2gyhvl" path="res://Assets/Textures/Tiles/TimePortal-UnderlayPortal.png" id="6_q2yey"]
 [ext_resource type="Script" path="res://Scripts/Portal.gd" id="6_wqinm"]
+[ext_resource type="Texture2D" uid="uid://c70iurw3s01x" path="res://Assets/Textures/Tiles/TrashPile.png" id="8_761qn"]
+[ext_resource type="Texture2D" uid="uid://b1x20kivkt31o" path="res://Assets/Textures/Tiles/TrashTube_Undertube.png" id="8_eblgi"]
 [ext_resource type="PackedScene" uid="uid://c2p2b5pk2vq4" path="res://Elements/NPC_Farah.tscn" id="8_vbobs"]
+[ext_resource type="Texture2D" uid="uid://dmgkwqvraauab" path="res://Assets/Textures/Tiles/TrashTube_Overtube.png" id="9_7p714"]
 [ext_resource type="PackedScene" uid="uid://1wqor2ww2nt7" path="res://Elements/NPC_Isaiah.tscn" id="9_ba700"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kp7r2"]
@@ -22,14 +25,19 @@ physics_layer_0/collision_mask = 2
 sources/0 = SubResource("TileSetAtlasSource_kp7r2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkkrb"]
+size = Vector2(33, 54.75)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_kh6tv"]
+points = PackedVector2Array(-48, 32, 48, 32, 0, 24)
 
 [node name="Base" type="Node2D"]
 
 [node name="Goose" parent="." instance=ExtResource("1_f40ro")]
+z_index = 1
 position = Vector2(381, -14)
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(2116, 805)
+position = Vector2(378, 784)
 zoom = Vector2(2, 2)
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -39,24 +47,23 @@ format = 2
 layer_0/tile_data = PackedInt32Array(1048574, 0, 0, 1048575, 0, 0, 983040, 0, 0, 983041, 0, 0, 983042, 0, 0, 983043, 0, 0, 983044, 0, 0, 983045, 0, 0, 983046, 0, 0, 983047, 0, 0, 983048, 0, 0, 983049, 0, 0, 983050, 0, 0, 983051, 0, 0, 983052, 0, 0, 983053, 0, 0, 983054, 0, 0, 983055, 0, 0, 983056, 0, 0, 983057, 0, 0, 983058, 0, 0, 983059, 0, 0, 983060, 0, 0, 983061, 0, 0, 983062, 0, 0, 983063, 0, 0, 983064, 0, 0, 983065, 0, 0, 983066, 0, 0, 983067, 0, 0, 983068, 0, 0, 983069, 0, 0, 983070, 0, 0, 983071, 0, 0)
 
 [node name="Portal" type="Node2D" parent="."]
-position = Vector2(-500, 0)
+position = Vector2(1484, 800)
 scale = Vector2(4, 4)
 script = ExtResource("6_wqinm")
 promptPosition = Vector2(0, -50)
 
 [node name="OverlayPillars" type="Sprite2D" parent="Portal"]
 z_index = 1
-position = Vector2(482, 200)
 texture = ExtResource("5_d81f6")
 
 [node name="UnderlayPortal" type="Sprite2D" parent="Portal"]
 z_index = -1
-position = Vector2(482, 200)
 texture = ExtResource("6_q2yey")
 
 [node name="Area2D" type="Area2D" parent="Portal"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/Area2D"]
+position = Vector2(0.5, 12.375)
 shape = SubResource("RectangleShape2D_gkkrb")
 
 [node name="Farah" parent="." instance=ExtResource("8_vbobs")]
@@ -66,3 +73,26 @@ promptPosition = Vector2(0, -30)
 [node name="Isaiah" parent="." instance=ExtResource("9_ba700")]
 position = Vector2(1740, 864)
 promptPosition = Vector2(0, -25)
+
+[node name="TrashPile" type="Node2D" parent="."]
+position = Vector2(388, 832)
+scale = Vector2(4, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="TrashPile"]
+texture = ExtResource("8_761qn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="TrashPile"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrashPile/StaticBody2D"]
+shape = SubResource("ConvexPolygonShape2D_kh6tv")
+
+[node name="TrashTube" type="Node2D" parent="."]
+position = Vector2(386, 638)
+scale = Vector2(4, 4)
+
+[node name="TrashTube_Undertube" type="Sprite2D" parent="TrashTube"]
+texture = ExtResource("8_eblgi")
+
+[node name="TrashTube_Overtube" type="Sprite2D" parent="TrashTube"]
+z_index = 2
+texture = ExtResource("9_7p714")

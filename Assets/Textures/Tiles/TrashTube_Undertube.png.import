@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://byaq2b5hvudta"
-path="res://.godot/imported/Farah_Idle_2.png-167215dce8650e1f6f6f2115aed68ee2.ctex"
+uid="uid://b1x20kivkt31o"
+path="res://.godot/imported/TrashTube_Undertube.png-5ecaf45015224bd9b2cfb335ee1c9add.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/NPCs/Farah_Idle_2.png"
-dest_files=["res://.godot/imported/Farah_Idle_2.png-167215dce8650e1f6f6f2115aed68ee2.ctex"]
+source_file="res://Assets/Textures/Tiles/TrashTube_Undertube.png"
+dest_files=["res://.godot/imported/TrashTube_Undertube.png-5ecaf45015224bd9b2cfb335ee1c9add.ctex"]
 
 [params]
 

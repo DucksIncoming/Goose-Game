@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://c2p2b5pk2vq4"]
 
 [ext_resource type="Script" path="res://Scripts/NPC_Farah.gd" id="1_cvr8w"]
-[ext_resource type="Texture2D" uid="uid://byaq2b5hvudta" path="res://Assets/Textures/NPCs/Farah_Idle_2.png" id="2_u7qnp"]
-[ext_resource type="Texture2D" uid="uid://cu63e0qg8opgj" path="res://Assets/Textures/NPCs/Farah_Idle_1.png" id="3_tuiik"]
+[ext_resource type="Texture2D" uid="uid://byaq2b5hvudta" path="res://Assets/Textures/NPCs/Farah/Farah_Idle_2.png" id="2_u7qnp"]
+[ext_resource type="Texture2D" uid="uid://cu63e0qg8opgj" path="res://Assets/Textures/NPCs/Farah/Farah_Idle_1.png" id="3_tuiik"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjyh"]
 size = Vector2(7.75, 46)
