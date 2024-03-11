@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dreppse3uqne2"]
+
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="1_t2n6f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1duv7"]
+size = Vector2(64, 20)
+
+[node name="Transition" type="Node2D"]
+z_index = 1
+script = ExtResource("1_t2n6f")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+
+[node name="Trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_1duv7")
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

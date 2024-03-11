@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://vmtxanxcviu7"]
+
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="1_r0h0n"]
+[ext_resource type="Texture2D" uid="uid://k1gmlibnqsd8" path="res://Assets/Textures/Tiles/DCW_Pipe.png" id="2_mtpeb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1duv7"]
+size = Vector2(118.5, 105)
+
+[node name="DCW-Transition" type="Node2D"]
+z_index = 1
+script = ExtResource("1_r0h0n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("2_mtpeb")
+
+[node name="Trigger" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(58.25, 0)
+shape = SubResource("RectangleShape2D_1duv7")
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

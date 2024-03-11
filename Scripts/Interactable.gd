@@ -2,7 +2,8 @@ extends Node2D
 class_name Interactable
 
 var interactionPrompt = preload("res://Elements/interaction_prompt.tscn")
-var promptObject : Node2D
+var promptObject : Node2D = null
+var enabled = true
 @export var promptPosition = Vector2.ZERO
 @onready var player = get_tree().get_root().get_node("Base/Goose")
 
@@ -19,8 +20,8 @@ func interactable_process(delta: float):
 
 func _process(delta: float):
 	if (promptObject):
-		promptObject.modulate.a = [0.2, 1][int(promptActive)]
-		
+		promptObject.modulate.a = [0.2, 1][int(promptActive and enabled)]
+			
 	interactable_process(delta)
 
 func interact():

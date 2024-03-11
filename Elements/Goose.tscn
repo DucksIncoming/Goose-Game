@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://ddtgouroyaq5o"]
+[gd_scene load_steps=32 format=3 uid="uid://ddtgouroyaq5o"]
 
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_j6i5p"]
 [ext_resource type="Texture2D" uid="uid://cx4l4xyjn0dsx" path="res://Assets/Textures/Player/Duck_Idle1.png" id="2_kti4l"]
@@ -6,9 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://dtkr4j87el86u" path="res://Assets/Textures/Player/Duck_Idle2.png" id="3_r04aa"]
 [ext_resource type="Texture2D" uid="uid://ccljqigg3t0gf" path="res://Assets/Textures/Player/Duck_Run1.png" id="4_gsost"]
 [ext_resource type="Texture2D" uid="uid://b1q62syy0nfk0" path="res://Assets/Textures/UI/TemporalEarpiece-Dialog.png" id="5_55or1"]
-[ext_resource type="Script" path="res://Elements/TemporalEarpiece.gd" id="5_86gre"]
 [ext_resource type="Texture2D" uid="uid://4t2i6c1hh6ly" path="res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Left.png" id="6_ibmbm"]
+[ext_resource type="Script" path="res://Scripts/GUI.gd" id="6_wanqh"]
 [ext_resource type="FontFile" uid="uid://drmpbiu5seyvv" path="res://Assets/Fonts/8bitoperator.ttf" id="7_a1d3h"]
+[ext_resource type="Script" path="res://Scripts/Dialog.gd" id="7_vox8m"]
+[ext_resource type="Shader" path="res://Elements/ResponseSelect.gdshader" id="9_tlyrx"]
+[ext_resource type="AudioStream" uid="uid://dkw8d2taj47dy" path="res://Elements/Audio Elements/GooseStepRandomizer.tres" id="12_1rc08"]
+[ext_resource type="AudioStream" uid="uid://vo04fivehmy6" path="res://Assets/Audio/UI/subtitle-talk.wav" id="12_4q8id"]
+[ext_resource type="Texture2D" uid="uid://b3sprex60ydi4" path="res://Assets/Textures/UI/Earpiece-Response.png" id="12_ym2gi"]
 
 [sub_resource type="Animation" id="Animation_yn01o"]
 resource_name = "Idle"
@@ -30,12 +35,12 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("CostumeSprite:offset")
-tracks/1/interp = 1
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.5),
+"times": PackedFloat32Array(0, 0.3),
 "transitions": PackedFloat32Array(1e-05, 1e-05),
-"update": 0,
+"update": 1,
 "values": [Vector2(0, 0), Vector2(0, 1)]
 }
 
@@ -129,10 +134,10 @@ tracks/1/path = NodePath("CostumeSprite:offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.05, 0.1),
+"times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1e-05, 1e-05),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 1)]
+"values": [Vector2(0, 1), Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_r7ppn"]
@@ -150,6 +155,199 @@ height = 13.64
 [sub_resource type="CircleShape2D" id="CircleShape2D_fywgv"]
 radius = 42.0007
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pj63y"]
+shader = ExtResource("9_tlyrx")
+shader_parameter/fillAmount = 0.155
+
+[sub_resource type="Shader" id="Shader_wkwau"]
+code = "shader_type canvas_item;
+uniform float fillAmount = 0.0;
+
+void fragment() {
+	bool baseColored = UV.x < (fillAmount + (0.02*sin(5.0*TIME + 10.0*(UV.y*UV.y))));
+	bool shadowColored = UV.x < (fillAmount + 0.03 + (0.02*sin(5.0*TIME + 12.0*(UV.y*UV.y))));
+	
+	if (baseColored) {
+		COLOR = COLOR * vec4(1.0,0.782,0.394,1);
+	}
+	else if (shadowColored) {
+		COLOR = COLOR * vec4(0.502, 0.424, 0.259, 1.0);
+	}
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the CanvasItem.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_022fa"]
+shader = SubResource("Shader_wkwau")
+shader_parameter/fillAmount = 0.0
+
+[sub_resource type="Animation" id="Animation_ghmta"]
+resource_name = "Select-Left"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftResponse:material:shader_parameter/fillAmount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [-0.2, 0.975]
+}
+
+[sub_resource type="Animation" id="Animation_21q1a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LeftResponse:material:shader_parameter/fillAmount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.155]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("RightResponse:material:shader_parameter/fillAmount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ilt6t"]
+resource_name = "Select-Right"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RightResponse:material:shader_parameter/fillAmount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [-0.2, 0.975]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_blbqc"]
+_data = {
+"RESET": SubResource("Animation_21q1a"),
+"Select-Left": SubResource("Animation_ghmta"),
+"Select-Right": SubResource("Animation_ilt6t")
+}
+
+[sub_resource type="Animation" id="Animation_wu650"]
+resource_name = "FadeFromBlack"
+length = 1.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.0001, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [true, true, false, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeToBlack:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:stateCompleted")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:inTransition")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7nor6"]
+resource_name = "FadeToBlack"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlack:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FadeToBlack:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:stateCompleted")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7rqjd"]
+_data = {
+"FadeFromBlack": SubResource("Animation_wu650"),
+"FadeToBlack": SubResource("Animation_7nor6")
+}
+
 [node name="Goose" type="CharacterBody2D"]
 scale = Vector2(4, 4)
 script = ExtResource("1_j6i5p")
@@ -160,7 +358,6 @@ texture = ExtResource("2_kti4l")
 [node name="CostumeSprite" type="Sprite2D" parent="."]
 position = Vector2(0, -3)
 texture = ExtResource("3_8h1a1")
-offset = Vector2(0, 1)
 
 [node name="GooseAnimator" type="AnimationPlayer" parent="."]
 libraries = {
@@ -179,9 +376,9 @@ visible = false
 shape = SubResource("CircleShape2D_fywgv")
 
 [node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource("6_wanqh")
 
 [node name="TemporalEarpiece" type="Control" parent="GUI"]
-visible = false
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -190,7 +387,34 @@ offset_left = -512.0
 offset_right = 512.0
 offset_bottom = 256.0
 grow_horizontal = 2
-script = ExtResource("5_86gre")
+script = ExtResource("7_vox8m")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="GUI/TemporalEarpiece"]
+position = Vector2(-448, 0)
+stream = ExtResource("12_4q8id")
+volume_db = -15.0
+max_distance = 100000.0
+
+[node name="LeftResponse" type="TextureRect" parent="GUI/TemporalEarpiece"]
+material = SubResource("ShaderMaterial_pj63y")
+offset_left = 64.0
+offset_top = 272.0
+offset_right = 120.0
+offset_bottom = 296.0
+scale = Vector2(8, 8)
+texture = ExtResource("12_ym2gi")
+stretch_mode = 4
+
+[node name="RightResponse" type="TextureRect" parent="GUI/TemporalEarpiece"]
+material = SubResource("ShaderMaterial_022fa")
+offset_left = 520.0
+offset_top = 272.0
+offset_right = 576.0
+offset_bottom = 296.0
+scale = Vector2(8, 8)
+texture = ExtResource("12_ym2gi")
+stretch_mode = 4
+flip_h = true
 
 [node name="DialogBackground" type="TextureRect" parent="GUI/TemporalEarpiece"]
 layout_mode = 1
@@ -198,8 +422,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -512.0
+offset_top = 24.0
 offset_right = -384.0
-offset_bottom = 32.0
+offset_bottom = 56.0
 grow_horizontal = 2
 scale = Vector2(8, 8)
 texture = ExtResource("5_55or1")
@@ -235,7 +460,34 @@ text = "Ayo Mr. White. I have had a kidney failure. I'm in insane medical debt y
 autowrap_mode = 2
 
 [node name="TextTimer" type="Timer" parent="GUI/TemporalEarpiece"]
-wait_time = 0.05
+wait_time = 0.025
+
+[node name="RightOptionAnimator" type="AnimationPlayer" parent="GUI/TemporalEarpiece"]
+libraries = {
+"": SubResource("AnimationLibrary_blbqc")
+}
+
+[node name="LeftOptionAnimator" type="AnimationPlayer" parent="GUI/TemporalEarpiece"]
+libraries = {
+"": SubResource("AnimationLibrary_blbqc")
+}
+
+[node name="FadeToBlack" type="ColorRect" parent="GUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0)
+
+[node name="GUIAnimator" type="AnimationPlayer" parent="GUI"]
+libraries = {
+"": SubResource("AnimationLibrary_7rqjd")
+}
+
+[node name="StepPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_1rc08")
+pitch_scale = 10.0
+max_distance = 100000.0
 
 [connection signal="area_entered" from="InteractionRadius" to="." method="_on_interaction_radius_area_entered"]
 [connection signal="area_exited" from="InteractionRadius" to="." method="_on_interaction_radius_area_exited"]

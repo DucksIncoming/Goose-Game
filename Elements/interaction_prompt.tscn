@@ -1,7 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://bckohsev614fj"]
+[gd_scene load_steps=7 format=3 uid="uid://bckohsev614fj"]
 
 [ext_resource type="Script" path="res://Scripts/InteractionPrompt.gd" id="1_llep6"]
 [ext_resource type="Texture2D" uid="uid://cweh2f188kpwn" path="res://Assets/Textures/UI/InteractPrompt.png" id="2_cgneo"]
+[ext_resource type="Shader" path="res://Shaders/Outline.gdshader" id="2_qlltn"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7i1wf"]
+shader = ExtResource("2_qlltn")
+shader_parameter/color = Color(1, 1, 1, 0.501961)
+shader_parameter/width = 0.5
+shader_parameter/pattern = 0
+shader_parameter/inside = false
+shader_parameter/add_margins = true
 
 [sub_resource type="Animation" id="Animation_sqeu1"]
 resource_name = "Prompt"
@@ -29,6 +38,7 @@ z_index = 10
 script = ExtResource("1_llep6")
 
 [node name="InteractSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7i1wf")
 texture = ExtResource("2_cgneo")
 offset = Vector2(0, 1)
 

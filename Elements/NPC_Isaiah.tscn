@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://clcwudcmj24le" path="res://Assets/Textures/NPCs/Isaiah/Isaiah_Idle1.png" id="2_q7y08"]
 [ext_resource type="Texture2D" uid="uid://lr2gxl3ltlfi" path="res://Assets/Textures/NPCs/Isaiah/Isaiah_Idle2.png" id="3_blyrr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjyh"]
-size = Vector2(7.75, 37.75)
-
 [sub_resource type="Animation" id="Animation_3pgsd"]
 resource_name = "Idle"
 length = 1.5
@@ -29,6 +26,9 @@ _data = {
 "Idle": SubResource("Animation_3pgsd")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ikjyh"]
+size = Vector2(7.75, 37.75)
+
 [node name="Isaiah" type="CharacterBody2D"]
 position = Vector2(3, 0)
 scale = Vector2(4, 4)
@@ -37,12 +37,14 @@ script = ExtResource("1_wsrbo")
 [node name="PersonSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_q7y08")
 
-[node name="PersonCollision" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0.125, 5.125)
-shape = SubResource("RectangleShape2D_ikjyh")
-
 [node name="PersonAnimator" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_td2ag")
 }
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="PersonCollision" type="CollisionShape2D" parent="Area2D"]
+visible = false
+position = Vector2(0.125, 5.125)
+shape = SubResource("RectangleShape2D_ikjyh")
