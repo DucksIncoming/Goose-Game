@@ -22,6 +22,8 @@ var hasEarpiece = false
 var activeInteractableBodies = []
 var activeInteractableNames = []
 
+var dialogPartner : Node2D = null
+
 # Onready vars
 @onready var GooseSprite = $GooseSprite
 @onready var CostumeSprite = $CostumeSprite

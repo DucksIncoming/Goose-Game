@@ -13,9 +13,11 @@ var currentCharacter = 0
 var textSpeed = 20
 
 var dialogCompleted = false
-var selectingResponse = true
+var selectingResponse = false
+var responseQueued = false
+var preventDialogContinue = false
 
-var option = 0 # 0 -> Left, 1 -> Right
+var option = 0 # 1 -> Left, 0 -> Right
 
 @onready var dialogElement = $SpeakerDialog
 @onready var speakerNameElement = $SpeakerName
@@ -39,23 +41,30 @@ func _process(delta):
 	speakerNameElement.text = speakerName
 	dialogBackground.texture = [ttOff, ttOn][int(player.hasEarpiece)]
 	
-	if (selectingResponse):
-		if (not option == int(get_local_mouse_position().x < get_viewport_rect().size.x / 2)):
-			option = int(get_local_mouse_position().x < get_viewport_rect().size.x / 2)
-			var lTime = LeftResponse.current_animation_position
-			var rTime = RightResponse.current_animation_position
-			
-			LeftResponse.play("Select-Left")
-			RightResponse.play("Select-Right")
-			
-			LeftResponse.seek(lTime, true)
-			RightResponse.seek(rTime, true)
-			
-			LeftResponse.speed_scale = (option * 2) - 1
-			RightResponse.speed_scale = -1 * ((option * 2) - 1)
-			print(lTime)
+	if (dialogElement.text == dialog and responseQueued and not preventDialogContinue):
+		$ResponseDelay.start()
+		responseQueued = false
+		preventDialogContinue = true
 	
-	if Input.is_action_just_pressed("Interact") and currentCharacter > 1:
+	$LeftResponse.visible = selectingResponse
+	$RightResponse.visible = selectingResponse
+	
+	if (selectingResponse):
+		option = int(get_local_mouse_position().x < 1920 / 4)
+		if (Input.is_action_just_pressed("Click")):
+			decide(option)
+			responseQueued = false
+			selectingResponse = false
+		
+		var signedOption = (option*2) - 1
+		
+		var newLeftFill = clampf($LeftResponse.material.get_shader_parameter("fillAmount")+delta*signedOption*5, -0.2, 1)
+		var newRightFill = clampf($RightResponse.material.get_shader_parameter("fillAmount")+delta*-signedOption*5, -0.2, 1)
+		
+		$LeftResponse.material.set_shader_parameter("fillAmount", newLeftFill)
+		$RightResponse.material.set_shader_parameter("fillAmount", newRightFill)
+	
+	if Input.is_action_just_pressed("Interact") and currentCharacter > 1 and not preventDialogContinue and not responseQueued:
 		if (not dialogCompleted):
 			currentCharacter = len(dialog)
 		elif (len(dialogQueue) > 0):
@@ -141,3 +150,11 @@ func hideDialog():
 	LeftResponse.visible = false
 	RightResponse.visible = false
 	selectingResponse = false
+
+func decide(option):
+	player.dialogPartner.decide(option)
+	preventDialogContinue = false
+	selectingResponse = false
+
+func _on_response_delay_timeout():
+	selectingResponse = true

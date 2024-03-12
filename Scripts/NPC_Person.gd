@@ -20,3 +20,6 @@ func interactable_process(delta: float):
 
 func interact():
 	pass
+
+func decide(option):
+	pass

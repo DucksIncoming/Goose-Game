@@ -47,3 +47,6 @@ func getPromptNode():
 
 func pushDialog(text, expr, names):
 	player.pushDialog(text, expr, names)
+
+func queueResponse():
+	player.GUI.earpiece.responseQueued = true
