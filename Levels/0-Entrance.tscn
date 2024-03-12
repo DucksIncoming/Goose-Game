@@ -1,69 +1,54 @@
-[gd_scene load_steps=60 format=3 uid="uid://bngyhlnotyxjm"]
+[gd_scene load_steps=61 format=3 uid="uid://bngyhlnotyxjm"]
 
-[ext_resource type="PackedScene" uid="uid://ddtgouroyaq5o" path="res://Elements/Goose.tscn" id="1_f40ro"]
-[ext_resource type="Texture2D" uid="uid://8axred6djc0v" path="res://Assets/Textures/Tiles/Backgrounds/ControlsRoom.png" id="1_qyiee"]
-[ext_resource type="Texture2D" uid="uid://5iamd0n4eptg" path="res://Assets/Textures/Tiles/Backgrounds/PortalRoom.png" id="2_oo6rd"]
-[ext_resource type="Texture2D" uid="uid://bbbpnirlmmpa6" path="res://Assets/Textures/Tiles/TrashRoom/TrashRoom-Tileset.png" id="2_y301o"]
-[ext_resource type="Texture2D" uid="uid://cs52s4mdnpenc" path="res://Assets/Textures/Tiles/Backgrounds/Light.png" id="3_cugk1"]
-[ext_resource type="Texture2D" uid="uid://c70iurw3s01x" path="res://Assets/Textures/Tiles/TrashPile.png" id="8_761qn"]
-[ext_resource type="Texture2D" uid="uid://b1x20kivkt31o" path="res://Assets/Textures/Tiles/TrashTube_Undertube.png" id="8_eblgi"]
-[ext_resource type="Texture2D" uid="uid://dmgkwqvraauab" path="res://Assets/Textures/Tiles/TrashTube_Overtube.png" id="9_7p714"]
-[ext_resource type="Texture2D" uid="uid://ccp160ovgssal" path="res://Assets/Textures/Tiles/SummoningShrine.png" id="10_utb3s"]
-[ext_resource type="Texture2D" uid="uid://cyqx2dg6m5q60" path="res://Assets/Textures/Tiles/AncientInterface.png" id="11_7rffk"]
-[ext_resource type="Script" path="res://Scripts/AncientInterface.gd" id="11_75p6f"]
-[ext_resource type="PackedScene" uid="uid://vmtxanxcviu7" path="res://Elements/Transitions/0-dcw_transition.tscn" id="11_q410r"]
-[ext_resource type="PackedScene" uid="uid://c2p2b5pk2vq4" path="res://Elements/NPC_Farah.tscn" id="13_1jubt"]
-[ext_resource type="Texture2D" uid="uid://bu6rhcp02ifrs" path="res://Assets/Textures/Tiles/DCW_Exit_Pipe.png" id="13_u6vjo"]
-[ext_resource type="PackedScene" uid="uid://bflfj41ntvhug" path="res://Elements/item.tscn" id="14_dux3o"]
-[ext_resource type="PackedScene" uid="uid://1wqor2ww2nt7" path="res://Elements/NPC_Isaiah.tscn" id="14_viy0u"]
-[ext_resource type="Texture2D" uid="uid://cbtqmpvrum63m" path="res://Assets/Textures/Tiles/EarpieceStand.png" id="15_qqvav"]
-[ext_resource type="Texture2D" uid="uid://dvc00ai2gyhvl" path="res://Assets/Textures/Tiles/TimePortal-UnderlayPortal.png" id="16_7pv8h"]
-[ext_resource type="Script" path="res://Scripts/Portal.gd" id="16_h1a03"]
-[ext_resource type="Texture2D" uid="uid://cdij7us2phs7h" path="res://Assets/Textures/Tiles/TimePortal-OverlayPillars.png" id="17_h7nh3"]
-[ext_resource type="Texture2D" uid="uid://c5kt81we4it37" path="res://Assets/Textures/Tiles/FenceSwitch.png" id="18_2r5y7"]
-[ext_resource type="Script" path="res://Scripts/PortalFence.gd" id="18_b6dy5"]
-[ext_resource type="Script" path="res://Scripts/FenceSwitch.gd" id="18_cf87c"]
-[ext_resource type="Texture2D" uid="uid://chf1488fx2une" path="res://Assets/Textures/Tiles/PortalFence/Fence_0.png" id="18_s2ro1"]
-[ext_resource type="Texture2D" uid="uid://dbxk4qkvhhwr4" path="res://Assets/Textures/Tiles/PortalFence/Fence_1.png" id="19_5b750"]
-[ext_resource type="Texture2D" uid="uid://doks00hhxpsmb" path="res://Assets/Textures/Tiles/PortalFence/Fence_2.png" id="20_a02wr"]
-[ext_resource type="Texture2D" uid="uid://b3u87m7kx4np2" path="res://Assets/Textures/Tiles/FenceSwitch-Cover.png" id="20_wfirs"]
-[ext_resource type="Texture2D" uid="uid://dx0arbwwt3645" path="res://Assets/Textures/Tiles/PortalFence/Fence_3.png" id="21_pmvle"]
-[ext_resource type="Texture2D" uid="uid://bag2vbr0ho6jp" path="res://Assets/Textures/Tiles/PortalFence/Fence_4.png" id="22_5aaai"]
-[ext_resource type="Texture2D" uid="uid://khfi4bj7ij6b" path="res://Assets/Textures/Tiles/PortalFence/Fence_5.png" id="23_h2dh2"]
-[ext_resource type="Texture2D" uid="uid://b2mvovqcqv4p0" path="res://Assets/Textures/Tiles/PortalFence/Fence_6.png" id="24_imgpx"]
-[ext_resource type="Texture2D" uid="uid://ba0a0kk8o0q8n" path="res://Assets/Textures/Tiles/PortalFence/Fence_7.png" id="25_0rtdb"]
-[ext_resource type="Texture2D" uid="uid://dmeikrcxw7y7j" path="res://Assets/Textures/Tiles/PortalFence/Fence_8.png" id="26_inx7h"]
-[ext_resource type="Texture2D" uid="uid://bdrw4oumahdpw" path="res://Assets/Textures/Tiles/PortalFence/Fence_9.png" id="27_rraty"]
-[ext_resource type="Texture2D" uid="uid://bca3do1nh50h0" path="res://Assets/Textures/Tiles/PortalFence/Fence_10.png" id="28_l7g01"]
-[ext_resource type="Texture2D" uid="uid://b7m7hty7u3t4r" path="res://Assets/Textures/Tiles/PortalFence/Fence_11.png" id="29_ywg1o"]
-[ext_resource type="Texture2D" uid="uid://b4nt46xkx8ijy" path="res://Assets/Textures/Tiles/PortalFence/Fence_12.png" id="30_ngofi"]
-[ext_resource type="Texture2D" uid="uid://dg8hrf4dsga67" path="res://Assets/Textures/Tiles/PortalFence/Fence_13.png" id="31_fouab"]
-[ext_resource type="Texture2D" uid="uid://cwgrrgfonc20w" path="res://Assets/Textures/Tiles/PortalFence/Fence_14.png" id="32_lw3yf"]
-[ext_resource type="Texture2D" uid="uid://d2pfrf1oh5haw" path="res://Assets/Textures/Tiles/PortalFence/Fence_15.png" id="33_4bstg"]
-[ext_resource type="Texture2D" uid="uid://k2w5voqaoktj" path="res://Assets/Textures/Tiles/PortalFence/Fence_16.png" id="34_001jd"]
-[ext_resource type="Texture2D" uid="uid://dufpp8mblj5g2" path="res://Assets/Textures/Tiles/PortalFence/Fence_17.png" id="35_udsb5"]
-[ext_resource type="Texture2D" uid="uid://cjw23mva77o3c" path="res://Assets/Textures/Tiles/PortalFence/Fence_18.png" id="36_0as58"]
-[ext_resource type="Texture2D" uid="uid://b4hn652610pvr" path="res://Assets/Textures/Tiles/PortalFence/Fence_19.png" id="37_k1dpy"]
-[ext_resource type="Texture2D" uid="uid://cial7bspbr5q1" path="res://Assets/Textures/Tiles/PortalFence/Fence_20.png" id="38_t76u2"]
-[ext_resource type="Texture2D" uid="uid://dx1u2p2srd4cb" path="res://Assets/Textures/Tiles/PortalFence/Fence_21.png" id="39_bwf6q"]
-[ext_resource type="Texture2D" uid="uid://dvjd6y081f1p4" path="res://Assets/Textures/Tiles/PortalFence/Fence_22.png" id="40_2x7yu"]
-[ext_resource type="Texture2D" uid="uid://beds78rp5kh47" path="res://Assets/Textures/Tiles/PortalFence/Fence_23.png" id="41_x43k5"]
-[ext_resource type="Texture2D" uid="uid://cafstjhaswkny" path="res://Assets/Textures/Tiles/PortalFence/Fence_24.png" id="42_gvrq1"]
-
-[sub_resource type="Animation" id="Animation_iglh1"]
-resource_name = "CameraPos_0"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(251, 769)]
-}
+[ext_resource type="Script" path="res://Scripts/0-Entrance.gd" id="1_qlpft"]
+[ext_resource type="Texture2D" uid="uid://8axred6djc0v" path="res://Assets/Textures/Tiles/Backgrounds/ControlsRoom.png" id="1_ujavr"]
+[ext_resource type="Texture2D" uid="uid://5iamd0n4eptg" path="res://Assets/Textures/Tiles/Backgrounds/PortalRoom.png" id="2_g3cvy"]
+[ext_resource type="Texture2D" uid="uid://cs52s4mdnpenc" path="res://Assets/Textures/Tiles/Backgrounds/Light.png" id="3_c107a"]
+[ext_resource type="PackedScene" uid="uid://ddtgouroyaq5o" path="res://Elements/Goose.tscn" id="4_bijdd"]
+[ext_resource type="Texture2D" uid="uid://bbbpnirlmmpa6" path="res://Assets/Textures/Tiles/TrashRoom/TrashRoom-Tileset.png" id="5_whbei"]
+[ext_resource type="Texture2D" uid="uid://c70iurw3s01x" path="res://Assets/Textures/Tiles/TrashPile.png" id="6_6e4dk"]
+[ext_resource type="Texture2D" uid="uid://b1x20kivkt31o" path="res://Assets/Textures/Tiles/TrashTube_Undertube.png" id="7_tq8pu"]
+[ext_resource type="Texture2D" uid="uid://dmgkwqvraauab" path="res://Assets/Textures/Tiles/TrashTube_Overtube.png" id="8_dg4yr"]
+[ext_resource type="Script" path="res://Scripts/AncientInterface.gd" id="9_qmyba"]
+[ext_resource type="Texture2D" uid="uid://cyqx2dg6m5q60" path="res://Assets/Textures/Tiles/AncientInterface.png" id="10_hi2jl"]
+[ext_resource type="PackedScene" uid="uid://bflfj41ntvhug" path="res://Elements/item.tscn" id="11_8cxj5"]
+[ext_resource type="Texture2D" uid="uid://ccp160ovgssal" path="res://Assets/Textures/Tiles/SummoningShrine.png" id="12_lhpyw"]
+[ext_resource type="PackedScene" uid="uid://vmtxanxcviu7" path="res://Elements/Transitions/0-dcw_transition.tscn" id="13_i06iw"]
+[ext_resource type="Texture2D" uid="uid://bu6rhcp02ifrs" path="res://Assets/Textures/Tiles/DCW_Exit_Pipe.png" id="14_4orp4"]
+[ext_resource type="PackedScene" uid="uid://c2p2b5pk2vq4" path="res://Elements/NPC_Farah.tscn" id="15_o3sbx"]
+[ext_resource type="PackedScene" uid="uid://1wqor2ww2nt7" path="res://Elements/NPC_Isaiah.tscn" id="16_u45dj"]
+[ext_resource type="Texture2D" uid="uid://cbtqmpvrum63m" path="res://Assets/Textures/Tiles/EarpieceStand.png" id="17_fsiku"]
+[ext_resource type="Script" path="res://Scripts/Portal.gd" id="18_773t6"]
+[ext_resource type="Texture2D" uid="uid://cdij7us2phs7h" path="res://Assets/Textures/Tiles/TimePortal-OverlayPillars.png" id="19_axcre"]
+[ext_resource type="Script" path="res://Scripts/FenceSwitch.gd" id="20_afvw0"]
+[ext_resource type="Texture2D" uid="uid://c5kt81we4it37" path="res://Assets/Textures/Tiles/FenceSwitch.png" id="21_fpn1p"]
+[ext_resource type="Texture2D" uid="uid://b3u87m7kx4np2" path="res://Assets/Textures/Tiles/FenceSwitch-Cover.png" id="22_ivmy7"]
+[ext_resource type="Script" path="res://Scripts/PortalFence.gd" id="23_y15bg"]
+[ext_resource type="Texture2D" uid="uid://cafstjhaswkny" path="res://Assets/Textures/Tiles/PortalFence/Fence_24.png" id="24_23yle"]
+[ext_resource type="Texture2D" uid="uid://chf1488fx2une" path="res://Assets/Textures/Tiles/PortalFence/Fence_0.png" id="25_g2plf"]
+[ext_resource type="Texture2D" uid="uid://dbxk4qkvhhwr4" path="res://Assets/Textures/Tiles/PortalFence/Fence_1.png" id="26_e7gtn"]
+[ext_resource type="Texture2D" uid="uid://doks00hhxpsmb" path="res://Assets/Textures/Tiles/PortalFence/Fence_2.png" id="27_87m21"]
+[ext_resource type="Texture2D" uid="uid://dx0arbwwt3645" path="res://Assets/Textures/Tiles/PortalFence/Fence_3.png" id="28_wfqfr"]
+[ext_resource type="Texture2D" uid="uid://bag2vbr0ho6jp" path="res://Assets/Textures/Tiles/PortalFence/Fence_4.png" id="29_lvtwn"]
+[ext_resource type="Texture2D" uid="uid://khfi4bj7ij6b" path="res://Assets/Textures/Tiles/PortalFence/Fence_5.png" id="30_cih7q"]
+[ext_resource type="Texture2D" uid="uid://b2mvovqcqv4p0" path="res://Assets/Textures/Tiles/PortalFence/Fence_6.png" id="31_8ei4q"]
+[ext_resource type="Texture2D" uid="uid://ba0a0kk8o0q8n" path="res://Assets/Textures/Tiles/PortalFence/Fence_7.png" id="32_km7ki"]
+[ext_resource type="Texture2D" uid="uid://dmeikrcxw7y7j" path="res://Assets/Textures/Tiles/PortalFence/Fence_8.png" id="33_jyso6"]
+[ext_resource type="Texture2D" uid="uid://bdrw4oumahdpw" path="res://Assets/Textures/Tiles/PortalFence/Fence_9.png" id="34_4h5tt"]
+[ext_resource type="Texture2D" uid="uid://bca3do1nh50h0" path="res://Assets/Textures/Tiles/PortalFence/Fence_10.png" id="35_shp03"]
+[ext_resource type="Texture2D" uid="uid://b7m7hty7u3t4r" path="res://Assets/Textures/Tiles/PortalFence/Fence_11.png" id="36_wmiye"]
+[ext_resource type="Texture2D" uid="uid://b4nt46xkx8ijy" path="res://Assets/Textures/Tiles/PortalFence/Fence_12.png" id="37_stot8"]
+[ext_resource type="Texture2D" uid="uid://dg8hrf4dsga67" path="res://Assets/Textures/Tiles/PortalFence/Fence_13.png" id="38_8eh6d"]
+[ext_resource type="Texture2D" uid="uid://cwgrrgfonc20w" path="res://Assets/Textures/Tiles/PortalFence/Fence_14.png" id="39_a8366"]
+[ext_resource type="Texture2D" uid="uid://d2pfrf1oh5haw" path="res://Assets/Textures/Tiles/PortalFence/Fence_15.png" id="40_meu0u"]
+[ext_resource type="Texture2D" uid="uid://k2w5voqaoktj" path="res://Assets/Textures/Tiles/PortalFence/Fence_16.png" id="41_r4ste"]
+[ext_resource type="Texture2D" uid="uid://dufpp8mblj5g2" path="res://Assets/Textures/Tiles/PortalFence/Fence_17.png" id="42_o6wqc"]
+[ext_resource type="Texture2D" uid="uid://cjw23mva77o3c" path="res://Assets/Textures/Tiles/PortalFence/Fence_18.png" id="43_836ir"]
+[ext_resource type="Texture2D" uid="uid://b4hn652610pvr" path="res://Assets/Textures/Tiles/PortalFence/Fence_19.png" id="44_i0xpe"]
+[ext_resource type="Texture2D" uid="uid://cial7bspbr5q1" path="res://Assets/Textures/Tiles/PortalFence/Fence_20.png" id="45_0nbve"]
+[ext_resource type="Texture2D" uid="uid://dx1u2p2srd4cb" path="res://Assets/Textures/Tiles/PortalFence/Fence_21.png" id="46_vw7qe"]
+[ext_resource type="Texture2D" uid="uid://dvjd6y081f1p4" path="res://Assets/Textures/Tiles/PortalFence/Fence_22.png" id="47_hceud"]
+[ext_resource type="Texture2D" uid="uid://beds78rp5kh47" path="res://Assets/Textures/Tiles/PortalFence/Fence_23.png" id="48_nimrv"]
 
 [sub_resource type="Animation" id="Animation_4g5yo"]
 resource_name = "CameraPos_DCW-Transition"
@@ -79,15 +64,58 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(587, 1600), Vector2(587, 1615), Vector2(587, 1900)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iglh1"]
+resource_name = "0-CameraPos_0"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(251, 769)]
+}
+
+[sub_resource type="Animation" id="Animation_uj31d"]
+resource_name = "CameraPos_DCWEnter"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(300, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vs3kd"]
 _data = {
-"CameraPos_0": SubResource("Animation_iglh1"),
-"CameraPos_DCW-Transition": SubResource("Animation_4g5yo")
+"0-CameraPos_0": SubResource("Animation_iglh1"),
+"CameraPos_DCW-Transition": SubResource("Animation_4g5yo"),
+"CameraPos_DCWEnter": SubResource("Animation_uj31d")
 }
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ndlnx"]
-texture = ExtResource("2_y301o")
+texture = ExtResource("5_whbei")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
@@ -270,6 +298,8 @@ sources/1 = SubResource("TileSetAtlasSource_ndlnx")
 size = Vector2(20, 27)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aqqml"]
+radius = 8.0
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7qbex"]
 size = Vector2(5, 5)
@@ -281,7 +311,7 @@ size = Vector2(12, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("42_gvrq1")
+"texture": ExtResource("24_23yle")
 }],
 "loop": true,
 "name": &"Fence-Down",
@@ -289,79 +319,79 @@ animations = [{
 }, {
 "frames": [{
 "duration": 12.0,
-"texture": ExtResource("18_s2ro1")
+"texture": ExtResource("25_g2plf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_5b750")
+"texture": ExtResource("26_e7gtn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_a02wr")
+"texture": ExtResource("27_87m21")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_pmvle")
+"texture": ExtResource("28_wfqfr")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_5aaai")
+"texture": ExtResource("29_lvtwn")
 }, {
 "duration": 1.0,
-"texture": ExtResource("23_h2dh2")
+"texture": ExtResource("30_cih7q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_imgpx")
+"texture": ExtResource("31_8ei4q")
 }, {
 "duration": 1.0,
-"texture": ExtResource("25_0rtdb")
+"texture": ExtResource("32_km7ki")
 }, {
 "duration": 1.0,
-"texture": ExtResource("26_inx7h")
+"texture": ExtResource("33_jyso6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("27_rraty")
+"texture": ExtResource("34_4h5tt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("28_l7g01")
+"texture": ExtResource("35_shp03")
 }, {
 "duration": 1.0,
-"texture": ExtResource("29_ywg1o")
+"texture": ExtResource("36_wmiye")
 }, {
 "duration": 1.0,
-"texture": ExtResource("30_ngofi")
+"texture": ExtResource("37_stot8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("31_fouab")
+"texture": ExtResource("38_8eh6d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("32_lw3yf")
+"texture": ExtResource("39_a8366")
 }, {
 "duration": 1.0,
-"texture": ExtResource("33_4bstg")
+"texture": ExtResource("40_meu0u")
 }, {
 "duration": 1.0,
-"texture": ExtResource("34_001jd")
+"texture": ExtResource("41_r4ste")
 }, {
 "duration": 1.0,
-"texture": ExtResource("35_udsb5")
+"texture": ExtResource("42_o6wqc")
 }, {
 "duration": 1.0,
-"texture": ExtResource("36_0as58")
+"texture": ExtResource("43_836ir")
 }, {
 "duration": 1.0,
-"texture": ExtResource("37_k1dpy")
+"texture": ExtResource("44_i0xpe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("38_t76u2")
+"texture": ExtResource("45_0nbve")
 }, {
 "duration": 1.0,
-"texture": ExtResource("39_bwf6q")
+"texture": ExtResource("46_vw7qe")
 }, {
 "duration": 1.0,
-"texture": ExtResource("40_2x7yu")
+"texture": ExtResource("47_hceud")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_x43k5")
+"texture": ExtResource("48_nimrv")
 }, {
 "duration": 60.0,
-"texture": ExtResource("42_gvrq1")
+"texture": ExtResource("24_23yle")
 }],
 "loop": false,
 "name": &"Fence-Drop",
@@ -369,7 +399,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_s2ro1")
+"texture": ExtResource("25_g2plf")
 }],
 "loop": true,
 "name": &"Fence-Up",
@@ -378,6 +408,7 @@ animations = [{
 
 [node name="Base" type="Node2D"]
 position = Vector2(251, 769)
+script = ExtResource("1_qlpft")
 
 [node name="Background" type="Node2D" parent="."]
 position = Vector2(381, -14)
@@ -385,35 +416,35 @@ scale = Vector2(4, 4)
 
 [node name="ControlRoom" type="Sprite2D" parent="Background"]
 position = Vector2(167, 84.25)
-texture = ExtResource("1_qyiee")
+texture = ExtResource("1_ujavr")
 
 [node name="PortalRoom" type="Node2D" parent="Background"]
 position = Vector2(0, 0.25)
 
 [node name="Background" type="Sprite2D" parent="Background/PortalRoom"]
 position = Vector2(164.5, 483.25)
-texture = ExtResource("2_oo6rd")
+texture = ExtResource("2_g3cvy")
 
 [node name="Light" type="Sprite2D" parent="Background/PortalRoom"]
 position = Vector2(156, 405.75)
-texture = ExtResource("3_cugk1")
+texture = ExtResource("3_c107a")
 
 [node name="Light2" type="Sprite2D" parent="Background/PortalRoom"]
 position = Vector2(-36, 405.75)
-texture = ExtResource("3_cugk1")
+texture = ExtResource("3_c107a")
 
 [node name="Light3" type="Sprite2D" parent="Background/PortalRoom"]
 position = Vector2(342, 405.75)
-texture = ExtResource("3_cugk1")
+texture = ExtResource("3_c107a")
 
-[node name="Goose" parent="." instance=ExtResource("1_f40ro")]
+[node name="Goose" parent="." instance=ExtResource("4_bijdd")]
 z_index = 1
 position = Vector2(252, -1)
 up_direction = Vector2(0, 1)
 floor_stop_on_slope = false
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
-position = Vector2(257, 1988)
+position = Vector2(587, 1600)
 zoom = Vector2(2, 2)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerCamera"]
@@ -433,7 +464,7 @@ position = Vector2(248, 832)
 scale = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="TrashPile"]
-texture = ExtResource("8_761qn")
+texture = ExtResource("6_6e4dk")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="TrashPile"]
 
@@ -445,20 +476,20 @@ position = Vector2(246, 638)
 scale = Vector2(4, 4)
 
 [node name="TrashTube_Undertube" type="Sprite2D" parent="TrashTube"]
-texture = ExtResource("8_eblgi")
+texture = ExtResource("7_tq8pu")
 
 [node name="TrashTube_Overtube" type="Sprite2D" parent="TrashTube"]
 z_index = 2
-texture = ExtResource("9_7p714")
+texture = ExtResource("8_dg4yr")
 
 [node name="AncientInterface" type="Node2D" parent="."]
 position = Vector2(1043, 906)
 scale = Vector2(4, 4)
-script = ExtResource("11_75p6f")
+script = ExtResource("9_qmyba")
 promptPosition = Vector2(0, -25)
 
 [node name="Sprite2D" type="Sprite2D" parent="AncientInterface"]
-texture = ExtResource("11_7rffk")
+texture = ExtResource("10_hi2jl")
 
 [node name="Area2D" type="Area2D" parent="AncientInterface"]
 visible = false
@@ -466,7 +497,7 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AncientInterface/Area2D"]
 shape = SubResource("RectangleShape2D_pt3xj")
 
-[node name="Item" parent="." instance=ExtResource("14_dux3o")]
+[node name="Item" parent="." instance=ExtResource("11_8cxj5")]
 position = Vector2(2048, 1948)
 promptPosition = Vector2(0, -15)
 
@@ -475,9 +506,9 @@ position = Vector2(24, -128)
 scale = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="SummoningShrine"]
-texture = ExtResource("10_utb3s")
+texture = ExtResource("12_lhpyw")
 
-[node name="DCW-Transition" parent="." instance=ExtResource("11_q410r")]
+[node name="DCW-Transition" parent="." instance=ExtResource("13_i06iw")]
 position = Vector2(2072, 896)
 transitionDirection = Vector2(1, 0)
 exitPosition = Vector2(584, 1490)
@@ -490,16 +521,16 @@ rotation = -1.5708
 scale = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="DCW-Exit"]
-texture = ExtResource("13_u6vjo")
+texture = ExtResource("14_4orp4")
 
-[node name="Farah" parent="." instance=ExtResource("13_1jubt")]
+[node name="Farah" parent="." instance=ExtResource("15_o3sbx")]
 position = Vector2(760, 2016)
 dialog = ["Oh, good! I'm sure you know why you're here? Though maybe the trip left you without your memory", "Anyways, my name is Farah. We're here to fix the past. We've spent years working on this portal and we've finally got it online", "Only problem is... the quantum properties required to bring about time travel occur only in a shockingly goose-like form, meaning it's too small for either of us to enter"]
 expressions = ["res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Forward.png", "res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Down.png", "res://Assets/Textures/NPCs/Farah/SpeakingIcons/Farah_Speaking-Left.png"]
 names = ["???", "Farah", "Farah"]
 promptPosition = Vector2(0, -30)
 
-[node name="Isaiah" parent="." instance=ExtResource("14_viy0u")]
+[node name="Isaiah" parent="." instance=ExtResource("16_u45dj")]
 position = Vector2(1888, 1952)
 promptPosition = Vector2(0, -20)
 
@@ -508,38 +539,38 @@ position = Vector2(2044, 1984)
 scale = Vector2(4, 4)
 
 [node name="Sprite2D" type="Sprite2D" parent="EarpieceStand"]
-texture = ExtResource("15_qqvav")
+texture = ExtResource("17_fsiku")
 
 [node name="Portal" type="Node2D" parent="."]
 position = Vector2(76, 1990)
 scale = Vector2(4, 4)
-script = ExtResource("16_h1a03")
-promptPosition = Vector2(0, -35)
+script = ExtResource("18_773t6")
+promptPosition = Vector2(0, -10)
 
 [node name="Underlay" type="Sprite2D" parent="Portal"]
-position = Vector2(0, -9.53)
-texture = ExtResource("16_7pv8h")
+position = Vector2(0, 14.47)
+texture = ExtResource("12_lhpyw")
 
 [node name="Overlay" type="Sprite2D" parent="Portal"]
 z_index = 1
 position = Vector2(0, -9.5)
-texture = ExtResource("17_h7nh3")
+texture = ExtResource("19_axcre")
 
 [node name="Area2D" type="Area2D" parent="Portal"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal/Area2D"]
-position = Vector2(0.25, -0.75)
+position = Vector2(0.25, 13.25)
 shape = SubResource("CapsuleShape2D_aqqml")
 
 [node name="FenceSwitch" type="Node2D" parent="."]
 position = Vector2(360, 2048)
 scale = Vector2(4, 4)
-script = ExtResource("18_cf87c")
+script = ExtResource("20_afvw0")
 promptPosition = Vector2(0, -10)
 
 [node name="SwitchPoleSprite" type="Sprite2D" parent="FenceSwitch"]
 position = Vector2(0, -48)
-texture = ExtResource("18_2r5y7")
+texture = ExtResource("21_fpn1p")
 
 [node name="Area2D" type="Area2D" parent="FenceSwitch"]
 position = Vector2(0.535, 2.465)
@@ -550,13 +581,13 @@ shape = SubResource("RectangleShape2D_7qbex")
 [node name="SwitchCoverSprite" type="Sprite2D" parent="FenceSwitch"]
 position = Vector2(0.5, -0.5)
 rotation = 4.71239
-texture = ExtResource("20_wfirs")
+texture = ExtResource("22_ivmy7")
 offset = Vector2(2, 0)
 
 [node name="PortalFence" type="StaticBody2D" parent="."]
 position = Vector2(248, 2120)
 scale = Vector2(4, 4)
-script = ExtResource("18_b6dy5")
+script = ExtResource("23_y15bg")
 
 [node name="FenceCollision" type="CollisionShape2D" parent="PortalFence"]
 position = Vector2(0, -14)

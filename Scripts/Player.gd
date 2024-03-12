@@ -33,12 +33,13 @@ var dialogPartner : Node2D = null
 @onready var PlayerCamera = get_parent().get_node("PlayerCamera")
 @onready var CameraAnimator = PlayerCamera.get_node("AnimationPlayer")
 @onready var GUI = $GUI
+@onready var levelScript = get_parent()
 
 var stepAudioTimer = 0
 
 func _ready():
 	GooseAnimator.current_animation = "Idle"
-	CameraAnimator.current_animation = "CameraPos_0"
+	CameraAnimator.current_animation = str(levelScript.currentLevel) + "-CameraPos_0"
 	up_direction = Vector2(0,1)
 	randomizeCostume()
 
@@ -66,7 +67,8 @@ func applyForces(delta):
 	velocity += calculateExternalMovement(delta)
 
 func cameraHandler(delta):
-	PlayerCamera.position.x = move_toward(PlayerCamera.position.x, position.x, (abs(position.x-PlayerCamera.position.x) * delta * cameraSmooth))
+	if (not inTransition):
+		PlayerCamera.position.x = move_toward(PlayerCamera.position.x, position.x, (abs(position.x-PlayerCamera.position.x) * delta * cameraSmooth))
 
 func animationHandler(delta):
 	# Flip horizontally when changing direction

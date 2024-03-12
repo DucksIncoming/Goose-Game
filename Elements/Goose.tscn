@@ -434,6 +434,7 @@ stretch_mode = 4
 flip_h = true
 
 [node name="LeftResponseText" type="Label" parent="GUI/TemporalEarpiece/RightResponse"]
+layout_mode = 0
 offset_left = 10.25
 offset_top = 5.0
 offset_right = 385.25

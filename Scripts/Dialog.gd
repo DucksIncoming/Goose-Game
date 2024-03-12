@@ -79,6 +79,10 @@ func _process(delta):
 			dialogCompleted = false
 			currentCharacter = 1
 			speakerIcon.texture = load(expression)
+			
+			if (dialog.substr(0,8) == "[CHOICE]"):
+				responseQueued = true
+				dialog = dialog.substr(8, -1)
 		else:
 			closeDialog()
 

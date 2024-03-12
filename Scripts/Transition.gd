@@ -28,6 +28,7 @@ func _process(delta):
 func transition():
 	transitionQueued = true
 	player.inTransition = true
+	player.CameraAnimator.current_animation = "CameraPos_DCWEnter"
 	player.transitionWalkDirection = transitionDirection
 	player.GUI.fadeToBlack()
 
